@@ -2,9 +2,9 @@ function[iApp, jApp] = bestApproximateMatch(A, aPrime, B, bPrime, l, i, j)
     bestDist = inf;
     iApp = 0;
     jApp = 0;
-    [h, w, ~] = size(A);
-    for i2 = 1:h
-        for j2 = 1:w
+    [h, w, ~] = size(A{l});
+    for i2 = 3:h-2
+        for j2 = 3:w-2
             dist = distance(A, aPrime, B, bPrime, l, i, j, i2, j2);
             if (dist < bestDist)
                 bestDist = dist;

@@ -1,6 +1,6 @@
-imAname = 'tree1.png';
-filterName = 'blur';
-imBname = 'tree2.png';
+imAname = 'tree1small.png';
+filterName = 'blurred';
+imBname = 'tree2small.jpg';
 
 A = im2double(imread(imAname));
 Aprime = im2double(imread([filterName '-' imAname]));
