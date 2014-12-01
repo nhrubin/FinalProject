@@ -1,5 +1,5 @@
-function [i2, j2] = bestMatch(A, aPrime, B, bPrime, s, l, i, j)
-    [iApp, jApp] = bestApproximateMatch(A, aPrime, B, bPrime, l, i, j);
+function [i2, j2] = bestMatch(A, B, bPrime, s, l, i, j)
+    [iApp, jApp] = bestApproximateMatch(A, B, bPrime, l, i, j);
     i2 = iApp;
     j2 = jApp;
 %     [iCoh, jCoh] = bestCoherenceMatch(A, aPrime, B, bPrime, s, l, q);
