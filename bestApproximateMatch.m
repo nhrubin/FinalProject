@@ -1,4 +1,4 @@
-function[iApp, jApp] = bestApproximateMatch(A, B, bPrime, l, i, j)
+function[iApp, jApp, bestDist] = bestApproximateMatch(A, B, bPrime, l, i, j)
     bestDist = inf;
     iApp = 0;
     jApp = 0;
