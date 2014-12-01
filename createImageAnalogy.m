@@ -13,13 +13,12 @@ function Bprime = createImageAnalogy(A, Aprime, B)
         for i = 3:bh-2
             i
             for j = 3:bw-2
-                j
                 [i2, j2] = bestMatch(A, bPyr, bPrimePyr, s, l, i, j);
                 bPrimePyr{l}(i, j,:) = aPrimePyr{l}(i2, j2,:);
                 s{l}(i,j,:) = [i2, j2];
             end
         end
     end
-    Bprime = bPrimePyr{i};
+    Bprime = bPrimePyr{1};
 end
 

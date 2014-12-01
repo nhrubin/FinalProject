@@ -7,7 +7,7 @@ function[iApp, jApp] = bestApproximateMatch(A, B, bPrime, l, i, j)
     curVec = shiftdim(curVec, -1);
     for i2 = 3:h-2
         for j2 = 3:w-2
-            aVec = A{l}(i,j,:);
+            aVec = A{l}(i2,j2,:);
             dist = distVec(curVec, aVec);
             if (dist < bestDist)
                 bestDist = dist;
