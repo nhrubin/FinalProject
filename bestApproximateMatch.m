@@ -5,9 +5,10 @@ function[iApp, jApp, bestDist] = bestApproximateMatch(A, B, bPrime, l, i, j)
     [h, w, ~] = size(A{l});
     curVec = featureConcat(B, bPrime, l, i, j);
     curVec = shiftdim(curVec, -1);
+    A = A{l};
     for i2 = 3:h-2
         for j2 = 3:w-2
-            aVec = A{l}(i2,j2,:);
+            aVec = A(i2,j2,:);
             dist = distVec(curVec, aVec);
             if (dist < bestDist)
                 bestDist = dist;

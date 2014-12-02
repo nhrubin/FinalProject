@@ -1,5 +1,5 @@
 imAname = 'tree1small.png';
-filterName = 'blurred';
+filterName = 'inverted';
 imBname = 'tree2small.jpg';
 
 A = im2double(imread(['images/' imAname]));
