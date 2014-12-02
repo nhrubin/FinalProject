@@ -3,7 +3,11 @@ function vecs = featureVectors(pyr, primePyr)
     vecs = cell(numLevels, 1);
     for l = numLevels:-1:1
         [h, w, ~] = size(pyr{l});
-        vecs{l} = zeros(h, w, 204);
+        if (l == numLevels)
+            vecs{l} = zeros(h,w,111);
+        else
+            vecs{l} = zeros(h, w, 165);
+        end
         for i = 3:h-2
             for j = 3:w-2
                 vecs{l}(i,j,:) = featureConcat(pyr, primePyr, l, i, j);

@@ -6,6 +6,9 @@ function d = distVec(vec1, vec2)
 %     vec1(nans>0) = [];
 %     vec2(nans>0) = [];
     d = nansum((diff).^2);
+    if (isnan(d))
+        disp('NaN');
+    end
     d = d/size(vec1,2);
 end
 
