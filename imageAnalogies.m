@@ -1,6 +1,6 @@
-imAname = 'tree1small.png';
+imAname = 'tree3.jpg';
 filterName = 'inverted';
-imBname = 'tree2small.jpg';
+imBname = 'tree2medium.jpg';
 
 A = im2double(imread(['images/' imAname]));
 Aprime = im2double(imread(['images/' filterName '-' imAname]));

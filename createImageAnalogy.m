@@ -9,15 +9,22 @@ function Bprime = createImageAnalogy(A, Aprime, B)
     for l = numLevels:-1:1
         [bh, bw, ~] = size(bPyr{l});
         s{l} = zeros(bh, bw, 2);
-        bPrimePyr{l} = NaN(bh, bw, 3);
+        bPrimePyr{l} = bPyr{l};%zeros(bh, bw, 3);
+        a = A{l};
+        [ah, aw, al] = size(a);
+        a = permute(a, [3 2 1]);
+        a = reshape(a, [al, ah*aw]);
+        anno = ann(a);
         for i = 3:bh-2
             i
             for j = 3:bw-2
-                [i2, j2] = bestMatch(A, bPyr, bPrimePyr, s, l, i, j);
+                [i2, j2] = bestMatch(A, anno, bPyr, bPrimePyr, s, l, i, j);
+
                 bPrimePyr{l}(i, j,:) = aPrimePyr{l}(i2, j2,:);
                 s{l}(i,j,:) = [i2, j2];
             end
         end
+        anno = close(anno);
     end
     Bprime = bPrimePyr{1};
 end

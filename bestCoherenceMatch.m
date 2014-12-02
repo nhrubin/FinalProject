@@ -13,6 +13,9 @@ function [i2, j2, bestDist] = bestCoherenceMatch(A, B, bPrime, s, l, i, j);
             if (qi < 1 || qj < 1 || qi > h || qj > w)
                 continue;
             end
+            if (qi == i && qj > j)
+                continue;
+            end
             pPoss = s(qi, qj)-[m,n];
             pi = pPoss(1);
             pj = pPoss(2);
