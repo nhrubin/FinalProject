@@ -1,5 +1,5 @@
 function Bprime = createImageAnalogy(A, Aprime, B)
-    numLevels = 3;
+    numLevels = 7;
     aPyr = gaussianPyramid(A, numLevels);
     aPrimePyr = gaussianPyramid(Aprime, numLevels);
     bPyr = gaussianPyramid(B, numLevels);
@@ -7,7 +7,7 @@ function Bprime = createImageAnalogy(A, Aprime, B)
     A = featureVectors(aPyr, aPrimePyr);
     s = cell(numLevels, 1);
     for l = numLevels:-1:1
-        [bh, bw, ~] = size(bPyr{l});
+        [bh, bw, ~] = size(bPyr{l})
         s{l} = zeros(bh, bw, 2);
         bPrimePyr{l} = bPyr{l};%zeros(bh, bw, 3);
         a = A{l};
@@ -19,7 +19,6 @@ function Bprime = createImageAnalogy(A, Aprime, B)
             i
             for j = 3:bw-2
                 [i2, j2] = bestMatch(A, anno, bPyr, bPrimePyr, s, l, i, j);
-
                 bPrimePyr{l}(i, j,:) = aPrimePyr{l}(i2, j2,:);
                 s{l}(i,j,:) = [i2, j2];
             end

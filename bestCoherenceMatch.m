@@ -1,11 +1,13 @@
 function [i2, j2, bestDist] = bestCoherenceMatch(A, B, bPrime, s, l, i, j);
-    nSize = 2;
+    nSize = 12;
     s = s{l};
     [h,w,~] = size(s);
     [ha,wa,~] = size(A{l});
     qVec = featureConcat(B, bPrime, l, i, j);
     qVec = shiftdim(qVec, -1);
     bestDist = inf;
+    i2 = 0;
+    j2 = 0;
     for m = -nSize:nSize
         for n = -nSize:0
             qi = i+m;
