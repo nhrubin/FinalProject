@@ -4,13 +4,13 @@ function vecs = featureVectors(pyr, primePyr)
     for l = numLevels:-1:1
         [h, w, ~] = size(pyr{l});
         if (l == numLevels)
-            vecs{l} = zeros(h,w,111);
+            vecs{l} = zeros(111, h, w);
         else
-            vecs{l} = zeros(h, w, 165);
+            vecs{l} = zeros(165, h, w);
         end
         for i = 3:h-2
             for j = 3:w-2
-                vecs{l}(i,j,:) = featureConcat(pyr, primePyr, l, i, j);
+                vecs{l}(:, i, j) = featureConcat(pyr, primePyr, l, i, j);
             end
         end
     end

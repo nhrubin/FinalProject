@@ -1,13 +1,12 @@
 function [i2, j2, bestDist] = bestCoherenceMatch(A, B, bPrime, s, l, i, j);
     nSize = 12;
     s = s{l};
+    A = A{l};
     [h,w,~] = size(s);
-    [ha,wa,~] = size(A{l});
+    [~,ha,wa] = size(A);
     qVec = featureConcat(B, bPrime, l, i, j);
-    qVec = shiftdim(qVec, -1);
-    bestDist = inf;
-    i2 = 0;
-    j2 = 0;
+    pts = [];
+    indices = [];
     for m = -nSize:nSize
         for n = -nSize:0
             qi = i+m;
@@ -24,14 +23,14 @@ function [i2, j2, bestDist] = bestCoherenceMatch(A, B, bPrime, s, l, i, j);
             if (pi < 1 || pj < 1 || pi > ha || pj > wa)
                 continue;
             end
-            pVec = A{l}(pi, pj, :);
-            dist = distVec(qVec, pVec);
-            if (dist < bestDist)
-                bestDist = dist;
-                i2 = pi;
-                j2 = pj;
-            end
+            pts = [pts, A(:, pi, pj)];
+            indices = [indices; [pi, pj]];
         end
     end
+    anno = ann(pts);
+    [q, bestDist] = ksearch(anno, qVec, 1, .01);
+    i2 = indices(q, 1);
+    j2 = indices(q, 2);
+    anno = close(anno);
 end
 
