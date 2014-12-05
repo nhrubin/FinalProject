@@ -1,5 +1,5 @@
 function Bprime = createImageAnalogy(A, Aprime, B)
-    numLevels = 7;
+    numLevels = 5;
     aPyr = gaussianPyramid(A, numLevels);
     aPrimePyr = gaussianPyramid(Aprime, numLevels);
     bPyr = gaussianPyramid(B, numLevels);
