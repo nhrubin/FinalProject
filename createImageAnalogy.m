@@ -6,9 +6,11 @@ function Bprime = createImageAnalogy(A, Aprime, B)
     bPrimePyr = cell(numLevels, 1);
     A = featureVectors(aPyr, aPrimePyr);
     s = cell(numLevels, 1);
+    cohs = cell(numLevels, 1);
     for l = numLevels:-1:1
         [bh, bw, ~] = size(bPyr{l})
         s{l} = zeros(bh, bw, 2);
+        cohs{l} = zeros(bh, bw, 1);
         bPrimePyr{l} = bPyr{l};%zeros(bh, bw, 3);
         a = A{l};
         [al, ah, aw] = size(a);
@@ -18,7 +20,8 @@ function Bprime = createImageAnalogy(A, Aprime, B)
         for i = 3:bh-2
             i
             for j = 3:bw-2
-                [i2, j2] = bestMatch(A, anno, bPyr, bPrimePyr, s, l, i, j);
+                [i2, j2, coh] = bestMatch(A, anno, bPyr, bPrimePyr, s, l, i, j);
+                cohs{l}(i,j) = coh;
                 bPrimePyr{l}(i, j,:) = aPrimePyr{l}(i2, j2,:);
                 s{l}(i,j,:) = [i2, j2];
             end
