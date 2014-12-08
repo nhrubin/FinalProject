@@ -1,7 +1,5 @@
-function [q, bestDist] = bestCoherenceMatch(A, qVec, s, l, i, j)
+function [q, bestDist] = bestCoherenceMatch(A, qVec, s, i, j)
     nSize = 12;
-    s = s{l};
-%     A = A{l};
     [h,w,~] = size(s);
     [~,ha,wa] = size(A);
     pts = inf(size(qVec, 1), 350);
@@ -21,19 +19,15 @@ function [q, bestDist] = bestCoherenceMatch(A, qVec, s, l, i, j)
                 continue;
             end
             p = sub2ind([wa, ha], pj, pi);
-%             pts(:, index) = A(:, p);
-            indices(index) = p;%[pi, pj];
+            indices(index) = p;
             index = index+1;
         end
     end
     if (index == 1)
-%         i2 = 1;
-%         j2 = 1;
         q = 1;
         bestDist = inf;
         return;
     end
-%     pts = pts(:, 1:index-1);
     indices = indices(1:index-1);
     pts = A(:, indices);
     anno = ann(pts);
@@ -42,8 +36,6 @@ function [q, bestDist] = bestCoherenceMatch(A, qVec, s, l, i, j)
     q = q(ind);
     bestDist = bestDist(ind);
     q = indices(q);
-%     i2 = indices(1, q);
-%     j2 = indices(2, q);
     anno = close(anno);
 end
 
