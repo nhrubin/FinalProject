@@ -18,4 +18,4 @@ Bprime = createImageAnalogy(A, Aprime, B);
 
 % Bprime = hsv2rgb(Bprime);
 
-imwrite(Bprime, ['images/' filterName '-' imBname]);
+imwrite(Bprime, ['images/' filterName '-test-' imBname]);
