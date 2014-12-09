@@ -1,7 +1,10 @@
 function [q, bestDist] = bestCoherenceMatch(A, qVec, s, i, j, ah, aw)
-    nSize = 4;
+% examine already synthesized neighbors of pixel (i,j) in Bprime to find a
+% match that may not be absolutely as good as the approximate match but
+% will make the overall picture look more coherent.
+    nSize = 4; % neighborhood size
     [h,w,~] = size(s);
-    indices = ones(1, 350);
+    indices = ones(1, 350); % indicies in A of each potential match
     index = 1;
     for m = max(-nSize, 3-i):0
         for n = max(-nSize, 3-j):min(nSize, w-j)
@@ -27,12 +30,10 @@ function [q, bestDist] = bestCoherenceMatch(A, qVec, s, i, j, ah, aw)
         return;
     end
     indices = indices(1:index-1);
+    % make an ANN search structure from potential matches
     pts = A(:, indices);
     anno = ann(pts);
     [q, bestDist] = ksearch(anno, qVec, 1, .01);
-    ind = randi(numel(q));
-    q = q(ind);
-    bestDist = bestDist(ind);
     q = indices(q);
     anno = close(anno);
 end

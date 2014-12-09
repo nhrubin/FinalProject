@@ -13,8 +13,8 @@ function f = featureConcat(im, imPrime, l, i, j)
         imCoarse = reshape(imCoarse, [27,1]);
         imPrimeCoarse = reshape(imPrimeCoarse, [27,1]);
     else
-        imCoarse = [];%NaN(1,27);
-        imPrimeCoarse = [];%NaN(1,27);
+        imCoarse = [];
+        imPrimeCoarse = [];
     end
     f = [imFine; imPrimeFine; imCoarse; imPrimeCoarse];
 end
