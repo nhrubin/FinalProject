@@ -18,7 +18,7 @@ function Bprime = createImageAnalogy(A, Aprime, B)
         for i = 3:bh-2
             i
             for j = 3:bw-2
-                q = bestMatch(a, anno, bPyr, bPrimePyr, s, l, i, j);
+                q = bestMatch(a, anno, bPyr, bPrimePyr, s, l, i, j, ah, aw);
                 [j2, i2] = ind2sub([aw,ah], q);
                 bPrimePyr{l}(i, j,:) = aPrimePyr{l}(i2, j2,:);
                 s{l}(i,j,:) = [i2, j2];

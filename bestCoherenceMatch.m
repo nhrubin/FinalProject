@@ -1,12 +1,10 @@
-function [q, bestDist] = bestCoherenceMatch(A, qVec, s, i, j)
-    nSize = 12;
+function [q, bestDist] = bestCoherenceMatch(A, qVec, s, i, j, ah, aw)
+    nSize = 4;
     [h,w,~] = size(s);
-    [~,ha,wa] = size(A);
-    pts = inf(size(qVec, 1), 350);
     indices = ones(1, 350);
     index = 1;
-    for m = max(-nSize, 1-i):0
-        for n = max(-nSize, 1-j):min(nSize, w-j)
+    for m = max(-nSize, 3-i):0
+        for n = max(-nSize, 3-j):min(nSize, w-j)
             qi = i+m;
             qj = j+n;
             if (qi == i && qj > j)
@@ -15,10 +13,10 @@ function [q, bestDist] = bestCoherenceMatch(A, qVec, s, i, j)
             pPoss = s(qi, qj)-[m,n];
             pi = pPoss(1);
             pj = pPoss(2);
-            if (pi < 1 || pj < 1 || pi > ha || pj > wa)
+            if (pi < 1 || pj < 1 || pi > ah || pj > aw)
                 continue;
             end
-            p = sub2ind([wa, ha], pj, pi);
+            p = sub2ind([aw, ah], pj, pi);
             indices(index) = p;
             index = index+1;
         end
