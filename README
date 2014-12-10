@@ -1,0 +1,9 @@
+imageAnalogies.m - main script
+textureSynthesis.m - script for texture synthesis (generates random noise images)
+createImageAnalogy.m - creates B' given A, A', and B
+bestMatch.m - returns the index in A' of the best match for a pixel in B'
+bestApproximateMatch.m - finds best approximate match as described by paper
+bestCoherenceMatch.m - finds best coherence match as described by paper
+featureConcat.m - creates the feature vector for a given pixel in a given image pair
+featureVectors.m - returns an array of feature vectors for all pixels in an image
+gaussianPyramid.m - creates a Gaussian pyramid for a given image
